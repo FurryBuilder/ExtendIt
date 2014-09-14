@@ -24,18 +24,20 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-using System;
-
-namespace ExtendIt.Contracts
+// ReSharper disable once CheckNamespace
+namespace System.Diagnostics.CodeAnalysis
 {
 	/// <summary>
-	/// Encapsulate a set of extension methods in a specific scope (namespace)
-	/// represented by the implementer of this interface.
+	/// Specifies that the attributed code should be excluded from code coverage information.
 	/// </summary>
-	public interface IExtensionPoint
+	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Event, AllowMultiple = false, Inherited = false)]
+	public sealed class ExcludeFromCodeCoverageAttribute : Attribute
 	{
-		object ExtendedValue { get; }
-
-		Type ExtendedType { get; }
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/> class.
+		/// </summary>
+		public ExcludeFromCodeCoverageAttribute()
+		{
+		}
 	}
 }

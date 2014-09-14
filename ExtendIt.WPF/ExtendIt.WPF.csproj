@@ -46,8 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ExtendIt\Annotations.cs">
+      <Link>Annotations.cs</Link>
+    </Compile>
     <Compile Include="..\ExtendIt\Contracts\IExtensionPoint.cs">
       <Link>Contracts\IExtensionPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendIt\ExtensionPointBase.cs">
+      <Link>ExtensionPointBase.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

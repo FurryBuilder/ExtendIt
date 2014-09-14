@@ -107,9 +107,17 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\ExtendIt\Annotations.cs">
+      <Link>Annotations.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendIt\Contracts\IExtensionPoint.cs">
+      <Link>Contracts\IExtensionPoint.cs</Link>
+    </Compile>
     <Compile Include="..\ExtendIt\ExtensionPointBase.cs">
       <Link>ExtensionPointBase.cs</Link>
     </Compile>
+    <Compile Include="Extensions\TypeExtensions.WinRT.cs" />
+    <Compile Include="Helper\ExcludeFromCodeCoverageAttribute.WinRT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

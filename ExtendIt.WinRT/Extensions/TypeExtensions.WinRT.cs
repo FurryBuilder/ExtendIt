@@ -24,18 +24,16 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-using System;
+using System.Reflection;
 
-namespace ExtendIt.Contracts
+// ReSharper disable once CheckNamespace
+namespace System
 {
-	/// <summary>
-	/// Encapsulate a set of extension methods in a specific scope (namespace)
-	/// represented by the implementer of this interface.
-	/// </summary>
-	public interface IExtensionPoint
+	public static class TypeExtensions
 	{
-		object ExtendedValue { get; }
-
-		Type ExtendedType { get; }
+		public static bool IsAssignableFrom(this Type left, Type right)
+		{
+			return left.GetTypeInfo().IsAssignableFrom(right.GetTypeInfo());
+		}
 	}
 }
