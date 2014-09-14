@@ -41,7 +41,6 @@
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Annotations.cs" />
     <Compile Include="Contracts\IExtensionPoint.cs" />
     <Compile Include="ExtensionPointBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

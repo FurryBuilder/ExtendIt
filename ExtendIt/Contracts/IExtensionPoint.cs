@@ -34,8 +34,16 @@ namespace ExtendIt.Contracts
 	/// </summary>
 	public interface IExtensionPoint
 	{
+		/// <summary>
+		/// Value of the this parameter.
+		/// </summary>
 		object ExtendedValue { get; }
 
+		/// <summary>
+		/// Specific type of the this parameter. Might differ from the
+		/// extention point's type when dealing with base classes or
+		/// interfaces.
+		/// </summary>
 		Type ExtendedType { get; }
 	}
 }

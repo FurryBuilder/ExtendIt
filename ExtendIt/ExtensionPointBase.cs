@@ -26,7 +26,6 @@
 
 using System;
 using ExtendIt.Contracts;
-using JetBrains;
 
 namespace ExtendIt
 {
@@ -41,13 +40,26 @@ namespace ExtendIt
 		private readonly T _value;
 		private readonly Type _type;
 
-		protected ExtensionPointBase([CanBeNull] T value)
+		/// <summary>
+		/// Creates an extension point for a type based on an initial value.
+		/// </summary>
+		/// <param name="value">The exteneded value coming from the this parameter.</param>
+		protected ExtensionPointBase(T value)
 		{
 			_value = value;
 		}
 
-		protected ExtensionPointBase([NotNull] Type type)
+		/// <summary>
+		/// Creates an extension point for a type based on an initial type.
+		/// </summary>
+		/// <param name="type">The extended type of the value coming from the this parameter. Must not be null. Must be assignable to T.</param>
+		protected ExtensionPointBase(Type type)
 		{
+			if (type == null)
+			{
+				throw new ArgumentNullException("type");
+			}
+
 			if (!typeof(T).IsAssignableFrom(type))
 			{
 				throw new ArgumentException("type");
@@ -56,16 +68,25 @@ namespace ExtendIt
 			_type = type;
 		}
 
+		/// <summary>
+		/// The forwarded value of the this parameter.
+		/// </summary>
 		public T ExtendedValue
 		{
 			get { return _value; }
 		}
 
+		/// <summary>
+		/// The forwarded value of the this parameter.
+		/// </summary>
 		object IExtensionPoint.ExtendedValue
 		{
 			get { return _value; }
 		}
 
+		/// <summary>
+		/// The forwarded type of the this parameter.
+		/// </summary>
 		public Type ExtendedType
 		{
 			get { return _type ?? (_value == null ? typeof(T) : _value.GetType()); }

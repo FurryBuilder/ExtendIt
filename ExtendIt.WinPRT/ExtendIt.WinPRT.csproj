@@ -88,16 +88,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\ExtendIt\Annotations.cs">
-      <Link>Annotations.cs</Link>
-    </Compile>
     <Compile Include="..\ExtendIt\Contracts\IExtensionPoint.cs">
       <Link>Contracts\IExtensionPoint.cs</Link>
     </Compile>
     <Compile Include="..\ExtendIt\ExtensionPointBase.cs">
       <Link>ExtensionPointBase.cs</Link>
     </Compile>
-    <Compile Include="Helpers\ExcludeFromCodeCoverageAttribute.WinPRT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
