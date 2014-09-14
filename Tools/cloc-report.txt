@@ -1,0 +1,33 @@
+http://cloc.sourceforge.net v 1.60  T=0.11 s (137.9 files/s, 13102.9 lines/s)
+------------------------------------------------------------------------------------------------
+File                                                         blank        comment           code
+------------------------------------------------------------------------------------------------
+..\ExtendIt\Annotations.cs                                      69            459            188
+..\ExtendIt.WinRT\ExtendIt.WinRT.csproj                          0              7            121
+..\ExtendIt.WinPRT\ExtendIt.WinPRT.csproj                        0              7            100
+..\ExtendIt.Tests\ExtendIt.Tests.csproj                          0              7             90
+..\ExtendIt.WPF\ExtendIt.WPF.csproj                              0              7             57
+..\ExtendIt\ExtendIt.csproj                                      0              7             55
+..\ExtendIt\ExtensionPointBase.cs                                7              6             35
+..\ExtendIt.WinPRT\Properties\AssemblyInfo.cs                    4             16             17
+..\ExtendIt\Properties\AssemblyInfo.cs                           9             17             16
+..\ExtendIt.WPF\Properties\AssemblyInfo.cs                       4             17             15
+..\ExtendIt.Tests\Properties\AssemblyInfo.cs                     4             17             15
+..\ExtendIt.WinRT\Properties\AssemblyInfo.cs                     2             13             14
+..\ExtendIt\Contracts\IExtensionPoint.cs                         2              4              9
+..\AppMultiPackages.xml                                          0              0              6
+..\Tools\Clockr.bat                                              0              0              2
+------------------------------------------------------------------------------------------------
+SUM:                                                           101            584            740
+------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+MSBuild scripts                  5              0             35            423
+C#                               8            101            549            309
+XML                              1              0              0              6
+DOS Batch                        1              0              0              2
+-------------------------------------------------------------------------------
+SUM:                            15            101            584            740
+-------------------------------------------------------------------------------
