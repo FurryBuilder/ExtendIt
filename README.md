@@ -6,23 +6,25 @@ A simple tool that enables namespacing of extension methods.
 Usage
 -----
 
-This library provides you with an implementation for the extension point pattern. An extension point acts as a replacement context for your extension methods. Instead of extending a type directly, like string or IEnumerable, you will usually want to extend a specific extension point. This technique lets you regroup similar extension methods together like if they where all regrouped under the same namespace.
+This library provides you with an implementation for the extension point pattern. An extension point acts as a replacement context for your extension methods. Instead of extending a type directly, like string or IEnumerable, you will usually want to extend a specific extension point. This technique lets you regroup similar extension methods together under a single semantic banner as if they would have been declared under the same scope.
 
-This is very useful when the amount of extension methods you use on a type starts to pile up under a long list of very similar names. Here is an example of what this ambiguity could look like.
+This is very useful when the amount of extension methods you use on a type starts to pile up under a long list of very similar and yet unrelated names. Here is an example of what this ambiguity could look like.
 
 ```csharp
 using Serialization;
 using Utilities;
 using Validations;
 
-aString.HasValue();
-aString.IsNullOrEmpty();
-aString.FromJson();
+var s = "some value";
+
+s.HasValue();
+s.IsNullOrEmpty();
+s.FromJson();
 ```
 
-With just three methods, we can already see where this is going. Two of them looks somewhat similar and the third one deals with a completely different task than the firsts.
+With just three methods, we can already see where this is going. Two of them looks somewhat similar and the third deals with a completely different task. Even though the extension method themselves are declared within different namespaces, it is impossible to know their exact purpose just by looking at their usage. To make use of those namespaces, you would have to call those methods using the static syntax which would defeat the purpose of them being extensions in the first place.
 
-Even though the extension method themselves are declared within different namespaces, it is impossible to know their exact purpose just by looking at their usage. This sample provides two ambiguous methods, HasValue and IsNullOrEmpty, to better illustrate this issue. Can you tell which one is a simple wrapper around string.IsNullOrEmpty and which one is actually a contract that will throw an exception if not respected?
+This sample provides two ambiguous methods, HasValue and IsNullOrEmpty, to better illustrate this issue. Can you tell which one is a simple wrapper around string.IsNullOrEmpty and which one is actually a code contract that will throw an exception if not respected? In fact, you have a 50% chance of getting this guess right.
 
 Here is the same example but, this time, using extension points.
 
@@ -31,19 +33,22 @@ using Serialization;
 using Utilities;
 using Validations;
 
-aString.HasValue();
-aString.Validation().IsNullOrEmpty();
-aString.Serialization().FromJson();
+var s = "some value";
+
+s.HasValue();
+s.Validation().IsNullOrEmpty();
+s.Serialization().FromJson();
 ```
 
-We can now clearly tell the difference between the different goals of all three extension methods. This will also cleanup Visual Studio's Intellisense suggestions by only displaying the major groups instead of all of the disparate methods. There is also no obligation to put all extension methods under extension points.
+We can now clearly tell the difference between the different goals of all three extension methods. This will also cleanup Visual Studio's Intellisense suggestions by only displaying the major groups instead of all of the disparate methods. There is also no obligation to put all extension methods under extension points or no limit on the amount of chained extension points you can use.
 
 Declaration
 -----------
 
-To create an extension point, you simply have to inherit the ExtensionPointBase class by providing it a scope in which it will be available. Then, you have to declare an extension method to access this extension point.
+To create an extension point, you simply have to inherit the ExtensionPointBase class by providing it a scope (type) in which it need to be available. Then, you have to declare an extension method to access this extension point.
 
 ```csharp
+// This extension point will only be available on strings.
 class StringExtensionPoint : ExtensionPointBase<string>
 {
     public StringExtensionPoint(string value)
@@ -52,6 +57,7 @@ class StringExtensionPoint : ExtensionPointBase<string>
 
 static class StringExtensions
 {
+    // Expose the extension point.
     public static StringExtensionPoint Utilities(this string value)
     {
         return new StringExtensionPoint(value);
@@ -71,8 +77,7 @@ static class StringExtensions
 }
 ```
 
-
-As you can see, the extension point will take care to providing you with a context when you write an extension method. When using the default extension point class, this context is composed of two things:
+As you can see, the extension point will provide you with a context when you writing an extension method. When using the default extension point class, this context is composed of two things:
 1.    The extended value. The value that would be passed via the this parameter in a classic extension method.
 2.    The extended type. This provides the original type of the value, before getting casted to its interface or base class type if the extension point is generic.
 
