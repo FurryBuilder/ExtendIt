@@ -112,4 +112,4 @@ static class ValidationExtensions
 Disclaimer
 ----------
 
-This is an implementation of a pattern from nVentive's Umbrella framework available on CodePlex. This repository is mostly for those of us who do not want to pull in an entire framework just to use this awesome pattern.
+This is an implementation of a pattern from [nVentive's Umbrella framework available on CodePlex](https://umbrella.codeplex.com/). This repository is mostly for those of us who do not want to pull in an entire framework just to use this awesome pattern.
