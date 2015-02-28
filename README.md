@@ -1,4 +1,4 @@
-ExtendIt
+ExtendIt [![teamcity build status][teamcity-status]][teamcity-build]
 ========
 
 A simple tool that enables namespacing of extension methods.
@@ -113,3 +113,6 @@ Disclaimer
 ----------
 
 This is an implementation of a pattern from [nVentive's Umbrella framework available on CodePlex](https://umbrella.codeplex.com/). This repository is mostly for those of us who do not want to pull in an entire framework just to use this awesome pattern.
+
+[teamcity-status]: http://teamcity.furrybuilder.com/app/rest/builds/buildType:(id:FurryBuilder_ExtendIt_Dev)/statusIcon
+[teamcity-build]:  http://teamcity.furrybuilder.com/viewType.html?buildTypeId=FurryBuilder_ExtendIt_Dev
