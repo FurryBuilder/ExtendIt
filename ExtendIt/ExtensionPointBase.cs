@@ -1,18 +1,18 @@
-﻿//////////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////
 //
 // The MIT License (MIT)
 //
 // Copyright (c) 2014 Furry Builder
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
 //
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -26,6 +26,7 @@
 
 using System;
 using ExtendIt.Contracts;
+using JetBrains.Annotations;
 
 namespace ExtendIt
 {
@@ -34,6 +35,7 @@ namespace ExtendIt
     ///     Encapsulate the scope of an extension point.
     /// </summary>
     /// <typeparam name="T">Extension's scope. This can also be object or forwarded using generics.</typeparam>
+    [PublicAPI]
     public class ExtensionPointBase<T> : IExtensionPoint
     {
         private readonly Type _type;
@@ -43,7 +45,8 @@ namespace ExtendIt
         ///     Creates an extension point for a type based on an initial value.
         /// </summary>
         /// <param name="value">The exteneded value coming from the this parameter.</param>
-        protected ExtensionPointBase(T value)
+        [PublicAPI]
+        protected ExtensionPointBase([CanBeNull] T value)
         {
             _value = value;
         }
@@ -52,10 +55,11 @@ namespace ExtendIt
         ///     Creates an extension point for a type based on an initial type.
         /// </summary>
         /// <param name="type">
-        ///     The extended type of the value coming from the this parameter. Must not be null. Must be assignable
-        ///     to T.
+        ///     The extended type of the value coming from the this parameter.
+        ///     Must not be null. Must be assignable to T.
         /// </param>
-        protected ExtensionPointBase(Type type)
+        [PublicAPI]
+        protected ExtensionPointBase([NotNull] Type type)
         {
             if (type == null)
             {
@@ -73,6 +77,7 @@ namespace ExtendIt
         /// <summary>
         ///     The forwarded value of the this parameter.
         /// </summary>
+        [PublicAPI]
         public T ExtendedValue
         {
             get { return _value; }
@@ -81,6 +86,7 @@ namespace ExtendIt
         /// <summary>
         ///     The forwarded value of the this parameter.
         /// </summary>
+        [PublicAPI]
         object IExtensionPoint.ExtendedValue
         {
             get { return _value; }
@@ -89,6 +95,7 @@ namespace ExtendIt
         /// <summary>
         ///     The forwarded type of the this parameter.
         /// </summary>
+        [PublicAPI]
         public Type ExtendedType
         {
             get { return _type ?? (_value == null ? typeof (T) : _value.GetType()); }
