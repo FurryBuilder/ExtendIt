@@ -29,11 +29,11 @@ using System.Reflection;
 // ReSharper disable once CheckNamespace
 namespace System
 {
-	public static class TypeExtensions
-	{
-		public static bool IsAssignableFrom(this Type left, Type right)
-		{
-			return left.GetTypeInfo().IsAssignableFrom(right.GetTypeInfo());
-		}
-	}
+    public static class TypeExtensions
+    {
+        public static bool IsAssignableFrom(this Type left, Type right)
+        {
+            return left.GetTypeInfo().IsAssignableFrom(right.GetTypeInfo());
+        }
+    }
 }
