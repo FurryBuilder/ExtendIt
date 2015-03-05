@@ -25,6 +25,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 using System;
+using JetBrains.Annotations;
 
 namespace ExtendIt.Contracts
 {
@@ -32,11 +33,14 @@ namespace ExtendIt.Contracts
     ///     Encapsulate a set of extension methods in a specific scope (namespace)
     ///     represented by the implementer of this interface.
     /// </summary>
+    [PublicAPI]
     public interface IExtensionPoint
     {
         /// <summary>
         ///     Value of the this parameter.
         /// </summary>
+        [CanBeNull]
+        [PublicAPI]
         object ExtendedValue { get; }
 
         /// <summary>
@@ -44,6 +48,8 @@ namespace ExtendIt.Contracts
         ///     extention point's type when dealing with base classes or
         ///     interfaces.
         /// </summary>
+        [NotNull]
+        [PublicAPI]
         Type ExtendedType { get; }
     }
 }

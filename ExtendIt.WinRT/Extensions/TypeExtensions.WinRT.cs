@@ -25,13 +25,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 using System.Reflection;
+using JetBrains.Annotations;
 
 // ReSharper disable once CheckNamespace
 namespace System
 {
     public static class TypeExtensions
     {
-        public static bool IsAssignableFrom(this Type left, Type right)
+        [Pure]
+        [PublicAPI]
+        public static bool IsAssignableFrom([NotNull]this Type left, [NotNull] Type right)
         {
             return left.GetTypeInfo().IsAssignableFrom(right.GetTypeInfo());
         }
