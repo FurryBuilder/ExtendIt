@@ -32,6 +32,14 @@ namespace System
 {
     public static class TypeExtensions
     {
+        /// <summary>
+        /// Returns a value that indicates whether the specified type can be assigned to the current type.
+        /// </summary>
+        /// <param name="left">The type to check against.</param>
+        /// <param name="right">A more generic type candidate of left.</param>
+        /// <returns>
+        /// true if the specified type can be assigned to this type; otherwise, false.
+        /// </returns>
         [Pure]
         [PublicAPI]
         public static bool IsAssignableFrom([NotNull]this Type left, [NotNull] Type right)

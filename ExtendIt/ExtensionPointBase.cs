@@ -56,8 +56,9 @@ namespace ExtendIt
         /// </summary>
         /// <param name="type">
         ///     The extended type of the value coming from the this parameter.
-        ///     Must not be null. Must be assignable to T.
         /// </param>
+        /// <exception cref="ArgumentNullException">The value of 'type' cannot be null.</exception>
+        /// <exception cref="ArgumentException">The type T must be assignable from the value of 'type'.</exception>
         [PublicAPI]
         protected ExtensionPointBase([NotNull] Type type)
         {
