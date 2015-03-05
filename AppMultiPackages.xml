@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<NuGetterPackages>
-	<NuGetterPackage name="ExtendIt">
-		<NuSpecFilePath>ExtendIt\ExtendIt.nuspec</NuSpecFilePath>
-	</NuGetterPackage>
-</NuGetterPackages>
